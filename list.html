@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>售后服务</title>
+    <script src="for.js"></script>
+    <style type="text/css">
+        body {
+            background: #ddd;
+            font-family: '黑体';
+            font-size: 14px;
+        }
+        .date {
+            text-align: center
+        }
+        .date h2 {
+            padding: 0;
+            margin: 10px;
+        }
+        .date h4 {
+            margin: 0 0 25px 0;
+            padding: 0;
+        }
+        .log-box {
+            background: #fff;
+            padding: 10px 20px;
+            max-width: 960px;
+            overflow: hidden;
+            margin: 0 auto;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+        }
+        .listor {
+            background: #262626;
+            color: #fff;
+            text-align: center;
+            border-radius: 30px;
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            line-height: 15px;
+            vertical-align: text-bottom;
+            margin-right: 10px;
+        }
+        .qst {
+            margin: 8px 0;
+            margin-left: 30px;
+            color: #666;
+        }
+        .ans {
+            margin: 8px 0;
+            margin-left: 30px;
+            color: #666;
+        }
+        .type {
+            border-radius: 4px;
+            font-size: 10px;
+            padding: 3px;
+            margin: 0 3px;
+        }
+        .new {
+            background: #1aad19;
+            color: #fff;
+        }
+        .bug {
+            background: #FF2121;
+            color: #fff;
+        }
+        .panel {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .panel::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 30px;
+            border-bottom: 1px dotted #c9c9c9;
+            width: 95%;
+            z-index: 11;
+        }
+        .platname {
+            margin-left: 5px;
+            font-weight: 400;
+            color: #232323
+        }
+        .base-flex {
+            display: flex;
+            display: flexbox;
+            justify-content: center;
+            margin-bottom: 35px;
+        }
+        .cacl {
+            padding: 5px 8px;
+            display: inline-block;
+            border-radius: 5px;
+            margin: 0 10px;
+            color: #fff;
+            background: rgb(16, 29, 39);
+        }
+        .nofixed {
+            background: rgb(252, 156, 12)
+        }
+        .base-flex-b {
+            display: flex;
+            justify-content: space-between;
+        }
+        .qst-status {
+            margin: auto 20px;
+        }
+        .no{color:#f00 }
+        .newn{background:#1aad19}
+    </style>
+</head>
+
+<body>
+    <div class="log-box">
+        <div class="date">
+            <h2>售后工作日志</h2>
+            <h4>2018-10-18 周五</h4>
+        </div>
+        <div class="base-flex">
+            <span class="cacl">已解决:16</span> <span class="cacl">计时系统:5</span> <span class="cacl">BS系统:5</span><span class="cacl nofixed">未解决:6</span>
+       <span class="cacl newn">新需求15</span>
+        </div>
+        <div class="panel">
+            <div><span class="listor"> 1 </span><strong style="color:#232323;">菏泽东方驾校</strong><span class="platname">【驾校综合运营平台】<label class="type new">新需求</label></span></div>
+            <div class="base-flex-b">
+                <div>
+                    <div class="qst"><span>问题：收费系统中显示不全</span></div>
+                    <div class="ans"><span>解决：驾校删除了操作员导致，重新添加即可</span></div>
+                </div>
+                <div class="qst-status">已解决</div>
+            </div>
+        </div>
+        <div class="panel">
+            <div><span class="listor">2</span><strong style="color:#232323;">鲁山安顺</strong><span class="platname">【计时培训系统】<label class="type bug">Bug</label></span></div>
+            <div class="base-flex-b">
+                <div>
+                    <div class="qst"><span>问题：收费系统中显示不全</span></div>
+                    <div class="ans"><span>解决：驾校删除了操作员导致，重新添加即可</span></div>
+                </div>
+<div class="qst-status">未解决</div>
+            </div>
+        </div>
+        <div class="panel">
+            <div><span class="listor">3</span><strong style="color:#232323;">菏泽东方驾校</strong><span class="platname">【驾校综合运营平台】<label class="type new">新需求</label></span></div>
+            <div class="base-flex-b">
+                <div>
+                    <div class="qst"><span>问题：收费系统中显示不全</span></div>
+                    <div class="ans"><span>解决：驾校删除了操作员导致，重新添加即可</span></div>
+                </div>
+                <div class="qst-status">已解决</div>
+            </div>
+        </div>
+        <div class="panel">
+            <div><span class="listor">4</span><strong style="color:#232323;">朔州市直驾校</strong><span class="platname">【驾校综合运营平台】<label class="type bug">Bug</label></span></div>
+            <div class="base-flex-b">
+                <div>
+                    <div class="qst"><span>问题：收费系统中显示不全</span></div>
+                    <div class="ans"><span>解决：驾校删除了操作员导致，重新添加即可</span></div>
+                </div>
+<div class="qst-status no">未解决</div>
+            </div>
+        </div>
+        <div class="panel">
+            <div><span class="listor">5</span><strong style="color:#232323;">邓州市大诚</strong><span class="platname">【驾校综合运营平台】<label class="type new">新需求</label></span></div>
+            <div class="base-flex-b">
+                <div>
+                    <div class="qst"><span>问题：收费系统中显示不全</span></div>
+                    <div class="ans"><span>解决：驾校删除了操作员导致，重新添加即可</span></div>
+                </div>
+                <div class="qst-status">已解决</div>
+            </div>
+        </div>
+        <div class="panel">
+            <div><span class="listor">6</span><strong style="color:#232323;">鲁山安顺</strong><span class="platname">【计时培训系统】<label class="type bug">Bug</label></span></div>
+            <div class="base-flex-b">
+                <div>
+                    <div class="qst"><span>问题：收费系统中显示不全</span></div>
+                    <div class="ans"><span>解决：驾校删除了操作员导致，重新添加即可</span></div>
+                </div>
+<div class="qst-status">未解决</div>
+            </div>
+        </div>
+        <div class="panel">
+            <div><span class="listor">7</span><strong style="color:#232323;">菏泽东方驾校</strong><span class="platname">【驾校综合运营平台】<label class="type new">新需求</label></span></div>
+            <div class="base-flex-b">
+                <div>
+                    <div class="qst"><span>问题：收费系统中显示不全</span></div>
+                    <div class="ans"><span>解决：驾校删除了操作员导致，重新添加即可</span></div>
+                </div>
+                <div class="qst-status">已解决</div>
+            </div>
+        </div>
+        <div class="panel">
+            <div><span class="listor">8</span><strong style="color:#232323;">朔州市直驾校</strong><span class="platname">【驾校综合运营平台】<label class="type bug">Bug</label></span></div>
+<div class="base-flex-b">
+    <div>
+        <div class="qst"><span>问题：收费系统中显示不全</span></div>
+        <div class="ans"><span>解决：驾校删除了操作员导致，重新添加即可</span></div>
+    </div>
+    <div class="qst-status no">未解决</div>
+</div>
+        </div>
+        <div class="panel">
+            <div><span class="listor">9</span><strong style="color:#232323;">邓州市大诚</strong><span class="platname">【驾校综合运营平台】<label class="type new">新需求</label></span></div>
+<div class="base-flex-b">
+    <div>
+        <div class="qst"><span>问题：收费系统中显示不全</span></div>
+        <div class="ans"><span>解决：驾校删除了操作员导致，重新添加即可</span></div>
+    </div>
+    <div class="qst-status">已解决</div>
+</div>
+        </div>
+        <div class="panel">
+            <div><span class="listor">10</span><strong style="color:#232323;">菏泽东方驾校</strong><span class="platname">【驾校综合运营平台】<label class="type new">新需求</label></span></div>
+            <div class="base-flex-b">
+                <div>
+                    <div class="qst"><span>问题：收费系统中显示不全</span></div>
+                    <div class="ans"><span>解决：驾校删除了操作员导致，重新添加即可</span></div>
+                </div>
+                <div class="qst-status">已解决</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

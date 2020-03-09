@@ -1,0 +1,427 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>军博软件-Ic卡下单</title>
+	<!-- <link href="/css/my.css" type="text/css" rel="stylesheet"> -->
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<!-- import JavaScript -->
+
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<!-- <script type="text/javascript" src="/js/jquery-1.6.min.js"></script> -->
+	<script src="js/axios.min.js"></script>
+	<!-- <link rel="shortcut icon" href="../favicon.ico" /> -->
+
+	</script>
+	<style type="text/css">
+		.is_text {
+			border: #cfd8e1 1px solid;
+			background-color: #fff;
+			width: 260px;
+			height: 18px;
+			line-height: 18px;
+			vertical-align: middle
+		}
+
+		.is_upload {
+			border: #cfd8e1 1px solid;
+			width: 328px;
+		}
+
+		.is_textarea {
+			border: #cfd8e1 1px solid;
+			background-color: #fff;
+			width: 320px;
+			height: 90px
+		}
+
+		.is_btn {
+			line-height: 16px
+		}
+
+		.is_success {
+			margin: 0 auto;
+			font: 14px Arial, Helvetica, sans-serif;
+			color: #090 !important;
+			padding: 10px 10px 10px 45px;
+			width: 90%;
+			background: url(/sitefiles/services/cms/images/success.gif) no-repeat left center;
+			text-align: left;
+			line-height: 160%;
+			font-weight: bold;
+		}
+
+		.is_failure {
+			margin: 0 auto;
+			font: 14px Arial, Helvetica, sans-serif;
+			color: #CC0000 !important;
+			padding: 10px 10px 10px 45px;
+			width: 90%;
+			background: url(/sitefiles/services/cms/images/failure.gif) no-repeat left center;
+			text-align: left;
+			line-height: 160%;
+			font-weight: bold;
+		}
+	</style>
+
+	<!-- <script type="text/javascript" charset="utf-8" src="/SiteFiles/bairong/scripts/independent/validate.js"></script> -->
+</head>
+
+<body>
+	<div id='app'>
+
+		<h2 style="padding-left: 12px;text-align: center;">IC卡下单登记</h2>
+
+
+
+		<div id="inputSuccess_2" class="is_success" style="display:none"></div>
+		<div id="inputFailure_2" class="is_failure" style="display:none"></div>
+		<div id="inputContainer_2">
+
+			<el-form ref="form" action='' :model="form" label-width="80px" style="width: 500px;margin:0 auto;">
+
+				<el-form-item prop="lsdh" label="下单单号" :rules="{
+					required: true, message: '单号不能为空', trigger: 'blur'
+				  }">
+					<el-input id="" v-model="form.lsdh" name="lsdh" placeholder="请输下单号"></el-input>
+				</el-form-item>
+
+				<el-form-item label="驾校名称" prop='jxmc' :rules="{
+					required: true, message: '驾校名称不能为空', trigger: 'blur'
+				  }">
+					<el-input id="jxmc" v-model="form.jxmc" name="jxmc" placeholder="驾校名称"></el-input>
+				</el-form-item>
+
+				<el-form-item label="销售人员" prop='xsry' :rules="{
+					required: true, message: '选择销售人员', trigger: 'blur'
+				  }">
+					<el-select id="xsry" v-model="form.xsry" placeholder="请选择">
+						<el-option v-for="item in xsry" :key="item.value" :label="item.label" :value="item.value">
+						</el-option>
+					</el-select>
+				</el-form-item>
+
+				<el-form-item label="下单数量" prop='number' :rules="{
+					required: true, message: '输入下单数量', trigger: 'blur'
+				  }">
+					<el-input v-model="form.number" placeholder="请输入内容"></el-input>
+				</el-form-item>
+
+				<el-form-item label="制卡类型" prop='cardtype' :rules="{
+					required: true, message: '选择制卡类型', trigger: 'blur'
+				  }">
+					<el-radio-group v-model="form.cardtype">
+						<el-radio :label="3">M1</el-radio>
+						<el-radio :label="6">IC4428</el-radio>
+
+					</el-radio-group>
+				</el-form-item>
+				<el-form-item label="制卡公司" prop='zkgs' :rules="{
+					required: true, message: '选择制卡公司', trigger: 'blur'
+				  }">
+					<el-select id="xsry" v-model="form.zkgs.value" placeholder="请选择">
+						<el-option v-for="item in form.zkgs" :key="item.value" :label="item.label" :value="item.value">
+						</el-option>
+					</el-select>
+				</el-form-item>
+
+				<el-form-item label="下单日期" prop='date' :rules="{
+					required: true, message: '选择制卡日期', trigger: 'blur'
+				  }">
+					<el-date-picker v-model="form.date" type="date" placeholder="选择日期">
+					</el-date-picker>
+				</el-form-item>
+				<el-form-item label="缩略图">
+					
+					<el-upload class="upload-demo" action=" " :on-preview="handlePreview" :on-remove="handleRemove"
+						:before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed"
+						:file-list="form.img">
+						<el-button size="small" plain type="primary">点击上传</el-button>
+						<!-- <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div> -->
+					</el-upload>
+				</el-form-item>
+				<el-form-item label='下单备注'>
+
+					<el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容"
+						v-model="form.note">
+					</el-input>
+
+				</el-form-item>
+
+
+				<el-form-item label="">
+					<el-button type="primary" size='medium' @click="formsubmit('form')">
+						提交</el-button>
+					<el-button type="danger">重置</el-button>
+				</el-form-item>
+
+
+
+
+			</el-form>
+
+			<form id="frmInput_2" name="frmInput_2" style="margin:0;padding:0" method="post"
+				enctype="multipart/form-data"
+				action="/sitefiles/services/cms/action.aspx?publishmentSystemID=1&inputID=2&type=input"
+				target="loadInput_2">
+
+
+
+				<!-- <table cellSpacing="3" cellPadding="3" border="0" width="98%">
+					<tr>
+						<td width="70">
+							<nobr>驾校名称:</nobr>
+						</td>
+						<td>
+
+							
+						  <input id="jxmc" name="jxmc" type="text" class="input_text" value="" style="width:380px;" /> 
+						</td>
+					</tr>
+
+					<tr>
+						<td width="70">
+							<nobr>销售人员:</nobr>
+						</td>
+						<td>
+						
+
+
+					  <select id="xsry" name="xsry" class="select">
+								<option value="赵丽娜">赵丽娜</option>
+								<option value="王宏伟">王宏伟</option>
+								<option value="李珍">李珍</option>
+								<option value="魏涛">魏涛</option>
+								<option value="王智慧">王智慧</option>
+								<option value="杨新凯">杨新凯</option>
+								<option value="赵建军">赵建军</option>
+								<option value="任艳军">任艳军</option>
+								<option value="宋海龙">宋海龙</option>
+								<option value="李珍">李珍</option>
+								<option value="邢瑞洁">邢瑞洁</option>
+								<option value="郜晨">郜晨</option>
+								<option value="王倩">王倩</option>
+								<option value="董勤宁">董勤宁</option>
+								<option value="马捡选">马捡选</option>
+							</select>  
+						</td>
+					</tr>
+
+					<tr>
+						<td width="70">
+							<nobr>下卡数量:</nobr>
+						</td>
+						<td><input id="number" name="number" type="text" class="input_text" value=""
+								style="width:380px;" /></td>
+					</tr>
+
+					<tr>
+						<td width="70">
+							<nobr>制卡类型:</nobr>
+						</td>
+						<td>
+							<table id="cardtype">
+								<tr>
+									<td><span class="input_radio"><input id="cardtype_0" type="radio" name="cardtype"
+												value="M1" /><label for="cardtype_0">M1</label></span></td>
+									<td><span class="input_radio"><input id="cardtype_1" type="radio" name="cardtype"
+												value="IC4428" /><label for="cardtype_1">IC4428</label></span></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+
+					<tr>
+						<td width="70">
+							<nobr>制卡公司:</nobr>
+						</td>
+						<td><select id="zkgs" name="zkgs" class="select">
+								<option value="石家庄制卡">石家庄制卡</option>
+								<option value="小胡制卡">小胡制卡</option>
+								<option value="郑州制卡">郑州制卡</option>
+								<option value="福建制卡">福建制卡</option>
+							</select></td>
+					</tr>
+
+					<tr>
+						<td width="70">
+							<nobr>下单日期:</nobr>
+						</td>
+						<td><input id="date" name="date" type="text" class="input_text" value="2015-08-01"
+								onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd'});" /></td>
+					</tr>
+
+					<tr>
+						<td width="70">
+							<nobr>备注:</nobr>
+						</td>
+						<td><textarea id="note" name="note" class="textarea" style="width:98%;height:80px;"></textarea>
+						</td>
+					</tr>
+
+					<tr>
+						<td width="70">
+							<nobr>缩略图:</nobr>
+						</td>
+						<td><input id="img" name="img" type="file" class="input_file" /></td>
+					</tr>
+
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+							<el-button type="primary"
+								onclick="if (checkFormValueById('frmInput_2')){document.getElementById('frmInput_2').submit();}">
+								提交</el-button>
+							<el-button type="danger">重置</el-button>
+							<input value=" 提 交 " class="is_btn" type="button" />&nbsp;&nbsp;&nbsp;<input type="reset"
+								class="is_btn" value=" 重 置 " />&nbsp;&nbsp;[Ctrl+Enter]
+						</td>
+					</tr>
+				</table>   -->
+
+			</form>
+			<iframe id="loadInput_2" name="loadInput_2" width="0" height="0" frameborder="0"></iframe>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+
+		new Vue({
+			el: '#app',
+			data: function () {
+				return {
+					xsry: [{
+							value: '赵丽娜',
+							label: '赵丽娜'
+						}, {
+							value: '王宏伟',
+							label: '王宏伟'
+						}, {
+							value: '李珍',
+							label: '李珍'
+						}, {
+							value: '魏涛',
+							label: '魏涛'
+						}, {
+							value: '王智慧',
+							label: '王智慧'
+						}, {
+							value: '杨新凯',
+							label: '杨新凯'
+						}, {
+							value: '赵建军',
+							label: '赵建军'
+						}, {
+							value: '任艳军',
+							label: '任艳军'
+						}, {
+							value: '宋海龙',
+							label: '宋海龙'
+						}, {
+							value: '邢瑞洁',
+							label: '邢瑞洁'
+						}, {
+							value: '郜晨',
+							label: '郜晨'
+						}, {
+							value: '王倩',
+							label: '王倩'
+						}, {
+							value: '董勤宁',
+							label: '董勤宁'
+						}, {
+							value: '马捡选',
+							label: '马捡选'
+						}],
+					form: {
+						date: '',
+						number: '',
+						cardtype: 3,
+						note: '',
+						jxmc:'',
+						img: ['css/img/a.jpg'],
+						zkgs: [
+							{ value: '石家庄制卡' }
+						],
+						xsry:''
+						
+					},
+					value: ''
+				}
+
+			},
+			methods: {
+				formsubmit(formName) {
+
+					this.$refs[formName].validate((valid) => {
+						if (valid) {
+
+						 
+
+
+
+							alert('submit!');
+						} else {
+							console.log('error submit!!');
+							return false;
+						}
+					})
+
+				},
+				handleRemove(file, fileList) {
+					console.log(file, fileList);
+				},
+				handlePreview(file) {
+					console.log(file);
+				},
+				handleExceed(files, fileList) {
+					this.$message.warning(`当前限制选择 1个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+				},
+				beforeRemove(file, fileList) {
+					return this.$confirm(`确定移除 ${file.name}？`);
+				}
+			},
+		})
+
+		function stlInputCallback_2(jsonString) {
+			var obj = eval('(' + jsonString + ')');
+			if (obj) {
+				document.getElementById('inputSuccess_2').style.display = 'none';
+				document.getElementById('inputFailure_2').style.display = 'none';
+				if (obj.isSuccess == 'false') {
+					document.getElementById('inputFailure_2').style.display = '';
+					document.getElementById('inputFailure_2').innerHTML = obj.message;
+				} else {
+					document.getElementById('inputSuccess_2').style.display = '';
+					document.getElementById('inputSuccess_2').innerHTML = obj.message;
+					document.getElementById('inputContainer_2').style.display = 'none';
+					setTimeout('window.location.reload(false)', 2000);
+				}
+			}
+		}
+	</script>
+
+	<!-- <script language="javascript" src="/SiteFiles/bairong/scripts/datepicker/wdatepicker.js"></script> -->
+	<script>
+		document.body.onkeydown = function (e) { e = e ? e : window.event; var tagname = e.srcElement ? e.srcElement.tagName : e.target.tagName; if (tagname == 'INPUT' || tagname == 'TEXTAREA') { if (e != null && e.ctrlKey && e.keyCode == 13) { document.getElementById('submit_2').click(); } } }
+	</script>
+
+	<style>
+		body {
+			background: #f6f6f6;
+		}
+
+		#app {
+
+			width: 60%;
+			background: #fff;
+			padding: 20px;
+			margin: 0 auto;
+		}
+	</style>
+</body>
+
+</html>

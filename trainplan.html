@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>培训计划</title>
+    <style>
+        body {
+            padding: 0px 10px
+        }
+        .list-train {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        .list-train span{ text-align: left}
+        .icon {
+            vertical-align: text-bottom;
+            margin-right: 5px;
+        }
+        .train-states {
+            color: #307fe2;
+            background: #e0ecfb;
+            font-style: normal;
+            border-radius: 2px;
+            padding: 0 5px;
+       
+        }
+        .no-train {
+            color: #e24530;
+            background: #fbe0e0
+        }
+        .train-title {
+            border-bottom: 1px solid #e5e5e5;
+            padding: 10px 0;
+            padding-left: 32px;
+        }
+        .k2 {
+            background: url(images/k2.png) no-repeat left center /24px 24px;
+        }
+        .k3 {
+            background: url(images/k3.png) no-repeat left center /24px 24px;
+        }
+        .reset-btn{background: #307fe2;color:#fff;text-align: center;padding: 5px 0;width: 45%;margin:25px auto;border-radius: 5px;}
+    </style>
+</head>
+
+<body>
+    <div>
+        <h3 class="train-title k2">科二培训安排</h3>
+        <div>
+            <div class="list-train"><span>2月12日</span><span>教练:李翰</span><span>4小时</span><span style="flex:1">8:00-12:00</span><span><img src="images/ok.png" class="icon" width="16" /><i class="train-states trained">已培训</i></span></div>
+            <div class="list-train"><span>2月13日</span><span>教练:李翰</span><span>4小时</span><span>8:00-12:00</span><span><img src="images/nook.png" class="icon" width="16" /><i class="train-states no-train">未培训</i></span></div>
+            <div class="list-train"><span>2月14日</span><span>教练:李翰</span><span>4小时</span><span>8:00-12:00</span><span><img src="images/nook.png" class="icon" width="16" /><i class="train-states no-train">未培训</i></span></div>
+        </div>
+    </div>
+
+<div class="reset-btn">
+    重新安排科二
+</div>
+
+    <div>
+        <h3 class="train-title k3">科三培训安排</h3>
+        <div>
+            <div class="list-train"><span>2月12日</span><span>教练:李翰</span><span>4小时</span><span>8:00-12:00</span><span><img src="images/ok.png" class="icon" width="16" /><i class="train-states trained">已培训</i></span></div>
+            <div class="list-train"><span>2月13日</span><span>教练:李翰</span><span>4小时</span><span>8:00-12:00</span><span><img src="images/nook.png" class="icon" width="16" /><i class="train-states no-train">未培训</i></span></div>
+            <div class="list-train"><span>2月14日</span><span>教练:李翰</span><span>4小时</span><span>8:00-12:00</span><span><img src="images/nook.png" class="icon" width="16" /><i class="train-states no-train">未培训</i></span></div>
+        </div>
+    </div>
+<div class="reset-btn"> 重新安排科三</div>
+</body>
+
+</html>

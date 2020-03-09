@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>备案提示</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9
+        }
+        .center {
+            text-align: center;
+        }
+        #time {
+            color: #f00;
+            font-style: normal;
+            padding: 0 10px;
+        }
+        .button {
+            background: #18cc4e;
+            color: #fff;
+            border-radius: 10px;
+            padding: 5px 15px;
+            margin: 10px;
+        }
+        .wrap {
+            background: #fff;
+            margin: 5px 10px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body class="center">
+    <div class="wrap">
+        <h1 style="color:#f00">温馨提示</h1>
+        <p>尊敬的用户：由于该域名ks.ay001.com,5月11日起需要进行备案操作为期约20天</p>
+        <p>请访问最新理论学习网址：http://ks.ay001.net<a class="button" href="http://ks.ay001.net">访问最新网站</a><span><i id='time'>6</i>秒后进入新网站,请牢记新域名</span></p>
+    </div>
+    <script>
+        var currrentUrl = window.location.host;
+        var seconds = 6
+        setInterval(function() {
+            var i = seconds--
+            document.getElementById('time').innerText = i
+            if (seconds == 0 && currrentUrl.indexOf(".com") && currrentUrl !== "ay001.com" || currrentUrl == "ks.ay001.com/mobile/login.html") {
+                window.location.href = 'http://ks.ay001.net'
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>

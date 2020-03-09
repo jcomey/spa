@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animate</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *, :after, :before {
+            box-sizing: border-box;
+        }
+        .ani {
+            width: 23px;
+            position: relative;
+            height: 28px;
+        }
+        .btn {
+            display: inline-block;
+            cursor: pointer;
+        }
+        .like {
+            display: inline-block;
+          
+            border-radius: 50px;
+        }
+        .btn .ani::before {
+            content: '';
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 23px;
+            height: 28px;
+            background-image: url(steps_praised.png);
+            background-position: left;
+            background-repeat: no-repeat;
+            background-size: 483px 28px;
+        }
+        .like .ani::before {
+            animation: likeBlast 0.65s 1 steps(20);
+            background-position: right;
+        }
+        @keyframes likeBlast {
+            0% {
+                background-position:left ;
+            }
+            100% {
+                background-position: right;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn">
+        <div class="ani"></div>
+    </div>
+</body>
+<script>
+     
+    $(function() {
+        $('.btn').click(function() {
+            $(this).toggleClass('like')
+        })
+    })
+</script>
+
+</html>

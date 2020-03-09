@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上传七牛云存储</title>
+</head>
+<body>
+<script type="text/template" id="tmpltask"> {{for(var i=0;i < it.length;i++){ }}
+          <div class="com-box-task">
+
+            <div id="s_status" status='{{=it[i].GetStutus}}' class="task-status" style="background: #47C4BB;">进行中</div>
+            @*<div class="task-progress"></div>*@
+
+            <div class="task-target"> 
+                {{?(it[i].TaskType==1)}}
+
+                <div onclick="stackgoPart('/Partnership/Tasking/TaskDetail?id={{=it[i].TaskID}}',1)">
+                    
+                    <h5 class="task-h5">{{=it[i].TaskName}}</h5>
+                    <div class="task-achieve">
+                        <span class="p-bar" style=" z-index:1"><i class="p-line" style="z-index:-1;width:{{=it[i].UserID}}%"></i> </span><span style="margin-left:5px; font-size:0.65rem;">{{=it[i].FinishCount}}/{{=it[i].TargetCount}}</span>
+                    </div>
+                        
+                </div>
+                </div>
+                {{??(it[i].TaskType==2)}}
+             
+                
+                <div onclick="stackgoPart('/Partnership/Tasking/TaskDetail?id={{=it[i].TaskID}}',1)" style="display:flex;">
+                     <h5 class="task-h5">{{=it[i].TaskName}}    <span class="org-color">+<strong class="org-color">{{=it[i].TaskBonus}}元</strong></span></h5>
+                <div class="task-achieve">2
+
+
+
+                    <span class="p-bar" style=" z-index:1"><i class="p-line" style="z-index:-1;width:{{=it[i].UserID}}%"></i> </span><span style="margin-left: 5px; font-size: 0.65rem; ">{{=it[i].FinishCount}}/{{=it[i].TargetCount}}</span>
+
+                </div>
+                </div>
+
+                {{??(it[i].TaskType==3)}}
+                
+                <div onclick="stackgoPart('/Partnership/Tasking/TaskDetail?id={{=it[i].TaskID}}',1)" style="display:flex;">
+           
+                     <div  class="price-number" ><span class="org-color" style="font-size:22px;">+{{=it[i].TaskBonus}}</span></div>
+                    
+                         <div>
+                    <h5 class="task-h5">@*发展合伙人*@ {{=it[i].TaskName}}  </h5>
+                    
+
+                    <div class="task-achieve">
+
+
+                        <span class="p-bar" style="z-index:1"><i class="p-line" style="z-index:-1;width:{{=it[i].UserID}}%"></i>  </span><span style="margin-left: 5px; font-size: 0.65rem; ">{{=it[i].FinishCount}}/{{=it[i].TargetCount}}</span>
+
+                    </div>
+                                 <div class="task-time">
+                    <p class="dead-time"  >{{=(base.convertToDate(it[i].EndTime).Format("MM-dd hh:mm:ss")) }} 结束</p>
+                </div>
+                             </div>
+                </div>
+                    <div onclick="stackgoPart('/Partnership/Tasking/TaskDetail?id={{=it[i].TaskID}}',1)" style="display:flex;">
+                {{??(it[i].TaskType==4)}}
+              <div onclick="stackgoPart('/Partnership/Tasking/TaskDetail?id={{=it[i].TaskID}}',1)" style="display:flex;">
+                <h5 class="task-h5">@*集赞任务*@ {{=it[i].TaskName}}</h5>
+                   <div class="price-number"><span class="org-color" style="font-size:22px;">+{{=it[i].TaskBonus}}</span></div>
+                <div class="task-achieve">
+
+
+                    <span class="p-bar" style=" z-index:1"><i class="p-line" style="z-index:-1;width:{{=it[i].UserID}}%"></i>  </span><span style="margin-left: 5px; font-size: 0.65rem; ">{{=it[i].FinishCount}}/{{=it[i].TargetCount}}</span>
+                </div>
+
+                 </div>
+
+
+
+
+                {{??(it[i].TaskType==5)}}
+          
+
+                <!--onclick="stackgoPart('/Partnership/Tasking/TaskDetailSelf?id={{=it[i].TaskID}}',1)"-->
+
+                <div onclick="stackgoPart('/Partnership/Tasking/TaskDetailSelf?id={{=it[i].TaskID}}',1)" style="display:flex;" >
+                     <div  class="price-number" ><span class="org-color" style="font-size:22px;">+{{=it[i].TaskBonus}}</span></div>
+                    <div>
+                    
+                    <h5 class="task-h5">@*分享任务*@{{=it[i].TaskName}}</h5>
+                         
+
+                    <div class="task-achieve">
+                        <span class="p-bar" style=" z-index:1"><i class="p-line" style="z-index:-1;width:{{=it[i].UserID}}%"></i>  </span><span style="margin-left: 5px; font-size: 0.65rem; ">{{=it[i].FinishCount}}/{{=it[i].TargetCount}}</span>
+                    </div>
+
+               <div class="task-time">
+                    <p class="dead-time" >{{=(base.convertToDate(it[i].EndTime).Format("MM-dd hh:mm:ss")) }} 结束</p>
+                </div>
+
+                        </div>
+                   </div>
+                {{?}}
+       
+           
+            <div class="c_btn" style="margin:auto;">
+                {{?(it[i].TaskType==1)}}
+                <a class="featch-task" onclick="sharelite();">去推广</a>
+
+                {{??(it[i].TaskType==2)}}
+                <a class="featch-task" onclick="sharelite();">去招生</a>
+
+                {{??(it[i].TaskType==3)}}
+                <a class="featch-task" onclick="stackgoPart('../Mine/DevPartner', 1);">去发展</a>
+
+                {{??(it[i].TaskType==4)}}
+                <a class="featch-task" onclick="sharelite();">去集赞</a>
+
+                {{??(it[i].TaskType==5)}}
+                <a class="featch-task" onclick="sharelite();">去分享</a>
+
+                {{?}}
+            </div>
+
+        
+        </div>
+        {{} }}
+                    </div>
+    </script>
+
+
+</body>
+</html>

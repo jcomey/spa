@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Canvas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style type="text/css">
+        body {
+         margin: 0;
+         padding:0;
+           
+        }
+
+        .btn {
+            position: fixed;
+            top: 0;
+            right: 0;
+            border:none;
+            font-size: 18px;
+            color: #fff;
+            background: #0088ff;
+        }
+
+        /* .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            margin: 50% auto;
+            text-align: center;
+            height: 0;
+        } */
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas">
+    </canvas>
+    <button class="btn" style="padding:20px">生成海报</button>
+    <img id='source' src="https://img.lookcss.com/posters.jpg" style="display: none;" />
+    <img id='qrcodes' src="https://img.lookcss.com/qrcodes.jpg" style="display: none;" />
+    <img id='avatar' src="https://img.lookcss.com/avatar2.png" style="display: none;" />
+    <script type="text/javascript">
+        $(function () {
+            var coachData = {
+                'name': '王教练',
+                'phone': 13803728888,
+                'DrName': '汤阴正大驾校'
+            }
+            var w = $(window).width()
+            var h = $(window).height()
+            var cvs = document.getElementById('myCanvas');
+            var ctx = cvs.getContext('2d')
+            $('#myCanvas').attr('width', w-10)
+            $('#myCanvas').attr('height', h-10)
+            var imgPath = document.getElementById('source');
+            var qrcodes = document.getElementById('qrcodes');
+            var avatar=document.getElementById('avatar');
+            $(".btn ").click(function () {               
+                ctx.drawImage(imgPath, 0, 0, 445, 790, 0, 0, 445, 790)                
+                ctx.drawImage(qrcodes, 0, 0, 255, 255, 250, 600, 150, 150)
+                ctx.drawImage(avatar, 0, 0, 210, 210, 20, 20, 64, 64)
+                ctx.fillStyle = 'RGB(255, 255, 255)';    
+                ctx.font = '30px STheiti, SimHei';
+                ctx.fillText(coachData.DrName, 100, 60, 300);
+                ctx.font = '24px STheiti, SimHei';
+                ctx.fillText("【扫码报名】", 60, 650, 300);
+                ctx.fillText(coachData.name, 90, 690, 300);
+                ctx.fillText(coachData.phone, 60, 728, 200);
+            });
+
+
+        })
+    </script>
+</body>
+
+</html>

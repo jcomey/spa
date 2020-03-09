@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>播放</title>
+    <style>
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@1.6/lib/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@1.6/lib/vant.min.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.51jiameng.com/resource/static/libs/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="">
+        <van-button type="default">默认按钮</van-button>
+        <van-button type="primary">主要按钮</van-button>
+        <van-button type="info">信息按钮</van-button>
+        <van-button type="warning">警告按钮</van-button>
+        <van-button type="danger">危险按钮</van-button>
+        <van-circle v-model="currentRate" :rate="30" :speed="100" :text="text" />
+    </div>
+    <audio id='bgMusic' data-web-player="1" src="http://img.lookcss.com/hs.mp3" autoplay></audio>
+    <script type='text/javascript'>
+        var reader = new FileReader();
+        var AllowImgFileSize = 2100000; //上传图片最大值(单位字节)（ 2 M = 2097152 B ）超过2M上传失败 var file = $("#image")[0].files[0]; var imgUrlBase64; if (file) { //将文件以Data URL形式读入页面 imgUrlBase64 = reader.readAsDataURL(file); reader.onload = function (e) { //var ImgFileSize = reader.result.substring(reader.result.indexOf(",") + 1).length;//截取base64码部分（可选可不选，需要与后台沟通） if (AllowImgFileSize != 0 && AllowImgFileSize < reader.result.length) { alert( '上传失败，请上传不大于2M的图片！' ); return; }else{ //执行上传操作 alert(reader.result); } } }
+        var cs = $("script")
+        // var csss = cs.attr('src')
+        for (var i = 0; i < cs.length; i++) {
+            if (cs[i].src.indexOf('51jiameng') > 0) {
+                console.log(cs[i].src)
+                var newcs = "<script src='https://cdn.bootcss.com/layer/3.1.0/layer.js'><\/script>"
+                //    $('body').html(newcs)          
+                document.write(newcs)
+                console.log(newcs)
+            } else {
+                console.log("不用替换")
+            }
+        }
+        // function autoPlayAudio() {
+        //     wx.config({
+        //         // 配置信息, 即使不正确也能使用 wx.ready
+        //         debug: false,
+        //         appId: '',
+        //         timestamp: 1,
+        //         nonceStr: '',
+        //         signature: '',
+        //         jsApiList: []
+        //     });
+        //     wx.ready(function() {
+        //         var globalAudio = document.getElementById("bgMusic");
+        //         globalAudio.play();
+        //     });
+        // };
+        // // 解决ios音乐不自动播放的问题
+        // autoPlayAudio();
+    </script>
+</body>
+
+</html>

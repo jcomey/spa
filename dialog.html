@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>服务记录</title>
+    <style>
+        .review-panel {
+            margin-bottom: 45px;
+            display: flex;
+            display: flexbox;
+            justify-content: flex-end;
+        }
+        .review-panel-info {
+            margin: auto 0;
+            background: #2281f8;
+            color: #fff;
+            border-radius: 20px;
+            padding:  15px;
+            position: relative;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: justify;
+            flex: 1;
+        }
+        .review-panel-info::after {
+            position: absolute;
+            content: '';
+            right: -8px;
+            top: calc(50% - 15px);
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-left: 20px solid #2281f8;
+            border-bottom: 10px solid transparent;
+        }
+        .review-time {
+            position: absolute;
+            right: 10px;
+            bottom:-20px;
+            font-size: 0.8rem;
+            color: #999
+        }
+        .avatar {
+            border-radius: 50px;
+            background: #f2f2f2;
+            padding: 6px;
+            height: 32px;
+            width: 32px;
+            margin: auto 0 auto 15px;
+        }
+    </style>
+    <script></script>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li class='review-panel'>
+<div class="review-panel-info">重要提醒：2018年1月1日起，工信部要求备案域名必须完成域名实名认证，未完成实名认证、实名信息与备案信息不一致等会被管局驳回。点此查看网站备案域名核验规则 温馨提示：备案订单有效期为45天(自提交当天开始计算)，订单超期后自动失效，请您尽快提交并完成备案。为避免影响网站备案及访问，请注意服务器的服务期限及时续费。<span class="review-time">时间：2018-10-10 16:18</span></div>
+                <div><img src="services.png" class="avatar"></div>
+            </li>
+            <li class='review-panel'>
+                <div class="review-panel-info">王丽敏今天上午刚与客户进行了回访 <span class="review-time">时间：2018-10-10 16:18</span></div>
+                <div><img src="services.png" class="avatar"></div>
+            </li>
+        </ul>
+    </div>
+    <script>
+        isIE();
+    function isIE() { 
+     
+ if (!!window.ActiveXObject || "ActiveXObject" in window){
+    window.location.href="http://www.baidu.com"
+  return true;
+
+
+}
+  else{
+    alert("bbb")
+    return false;
+}
+ }
+  
+    
+    
+    </script>
+</body>
+
+</html>

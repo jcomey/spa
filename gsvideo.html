@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>视频</title>
+    <script src="https://sdk-release.qnsdk.com/qiniu-web-player-1.0.0.js"> </script>
+    <style>
+        #video {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="video" style="width: 720px; height: 680px;">
+    </div>
+    <script>
+        const player = new QPlayer({
+            url: "rtmp://192.168.0.69/live/stream",
+            container: document.getElementById("video"),
+        });
+    </script>
+</body>
+
+</html>

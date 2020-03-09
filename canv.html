@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+    </style>
+</head>
+
+<body id="body">
+
+ 
+        <img class="img" id="img1" src="1.png" />
+        <img class="img"id="img2"  src="k2.png" />
+        <img class="img" src="3.png" />
+        <img class="img" src="4.png" />
+<!--      
+    <section>
+        <div class="progressBar">
+            <canvas id="progressBar"></canvas>
+        </div>
+    </section> -->
+
+    <canvas id="canvas" width="800" height="500"></canvas>
+    <script src="canvas.js"></script>  
+    <!-- <script>
+        $(function() {
+            // var object = {};
+            // var params = [];
+            // for (var i = 0; i < 3; i++) {
+            //     var obj = {};
+            //     obj[i] = "abc";
+            //     params.push(obj);
+            // }
+            // object['name'] = 'jack';
+            // object['age'] = 25;
+            // object['data'] = params;
+            // var json = JSON.stringify(object);
+            var img = $(".newimg .img");
+            var params = [];
+            var object = {};
+            for (var i = 0; i < img.length; i++) {
+                var obj = {};
+                obj[i] = img[i].src;
+                params.push(obj);
+            }
+            // object['name'] = params;
+            var json = JSON.stringify(params)
+            console.log(json)
+        })
+    </script> -->
+</body>
+
+</html>

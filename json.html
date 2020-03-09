@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>json</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="json.js"></script>
+    <style>
+        div {
+            border-bottom: 1px solid #999
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <script>
+        var arrs = {
+            "status": 1,
+            "result": [{
+                "id": "16",
+                "name": "運動",
+                "sort": "50",
+                "tb": [{
+                    "goods_name": "4399吧",
+                    "goods_id": "2"
+                }, {
+                    "goods_name": "动漫吧",
+                    "goods_id": "4"
+                }]
+            }, {
+                "id": "17",
+                "name": "趣聞",
+                "sort": "50",
+                "tb": [{
+                    "goods_name": "推理吧",
+                    "goods_id": "1"
+                }, {
+                    "goods_name": "少儿吧",
+                    "goods_id": "3"
+                }]
+            }, {
+                "id": "18",
+                "name": "生活",
+                "sort": "50",
+                "tb": [{
+                    "goods_name": "随便吧",
+                    "goods_id": "5"
+                }]
+            }, {
+                "id": "19",
+                "name": "明星",
+                "sort": "50",
+                "tb": [{
+                    "goods_name": "123456",
+                    "goods_id": "6"
+                }]
+            }, {
+                "id": "20",
+                "name": "八卦",
+                "sort": "50",
+                "tb": [{
+                    "goods_name": "123456",
+                    "goods_id": "7"
+                }]
+            }]
+        }
+        $.each(arrs.result, function(i, v) {
+            // console.log(i)
+            //     console.log(v)
+            var str = '<div id=' + v.id + '><h3>' + v.name + '</h3></div>'
+            $(str).appendTo('body')
+            // $.each(arrs.result,function(index,value) {
+            //     console.log(index)
+            // var str2 = '<span>' + value[index].goods_name + '</span>'
+            //     $(str2).appendTo('#' + v.id)
+            // })
+            for (var m = 0; m < v.tb.length; m++) {
+                var str2 = '<span>' + v.tb[m].goods_name + '</span>'
+                $(str2).appendTo('#' + v.id)
+            }
+        })
+    </script> -->
+</body>
+
+</html>

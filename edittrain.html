@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>编辑培训计划</title>
+    <style>
+        .page-title {
+            text-align: center;
+        }
+        .grid-table {
+            border: 1px solid #e5e5e5;
+            width: 100%;
+            margin: 15px auto;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .grid-table tr td {
+            border: 1px solid #e5e5e5;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .opt-panel {
+            width: 55%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+        }
+        .opt-panel .add-btn {
+            background: rgb(73, 172, 103);
+            color: #fff;
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+        .opt-panel .do-btn {
+            background: #999;
+            color: #fff;
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+        .do-btn:hover {
+            background: #d46c0a
+        }
+        .edit-icon {
+            margin-right: 15px;
+        }
+        .tips {
+            text-align: center;
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+        .red {
+            color: #c00
+        }
+    </style>
+</head>
+
+<body>
+    <h3 class="page-title">朱先履科目二培训安排</h3>
+    <div>
+        <table class="grid-table">
+            <tr>
+                <td style="width:40%;"> 2月12日</td>
+                <td style="width:30%;">4小时</td>
+                <td style="width:30%;"><a class="edit-icon"><img src="edit.svg" width="20" /></a><a><img src="del.svg" width="20" /></a> </td>
+            </tr>
+            <tr>
+                <td style="width:40%;"> 2月12日</td>
+                <td style="width:30%;">4小时</td>
+                <td style="width:30%;"><a class="edit-icon"><img src="edit.svg" width="20" /></a><a><img src="del.svg" width="20" /></a> </td>
+            </tr>
+            <tr>
+                <td style="width:40%;"> 2月12日</td>
+                <td style="width:30%;">4小时</td>
+                <td style="width:30%;"><a class="edit-icon"><img src="edit.svg" width="20" /></a><a><img src="del.svg" width="20" /></a> </td>
+            </tr>
+        </table>
+        <div class="tips">根据大纲要求需要培训<b class="red">72</b>学时，已完成<b class="red">40</b>个学时</div>
+        <div class="opt-panel"><a class="add-btn">新增</a> <a class="do-btn">安排</a></div>
+    </div>
+</body>
+
+</html>

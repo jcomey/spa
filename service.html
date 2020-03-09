@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>售后服务记录</title>
+    <style>
+        .wraper {
+            background: #fff;
+            width: 960px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 2px;
+            transition: all .2s ease-in-out;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            margin-bottom: 18px;
+            position: relative;
+            top: 0;
+        }
+        .wraper:hover {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+            cursor: pointer;
+            top: -5px;
+            transition: all .2s ease-in-out;
+        }
+        body {
+            background: #f2f1f2;
+        }
+        .base-flex {
+            display: flex;
+            justify-content: start;
+            padding: 10px 0
+        }
+        .plat-name {
+            font-size: 1.2rem;
+        }
+        .gray-label {
+            color: #555
+        }
+        .mgl {
+            margin-left: 15px;
+        }
+        .qst-panel img, .ans-panel img {
+            vertical-align: middle;
+            margin-right: 8px
+        }
+        .w-box {}
+        .recorder {
+            text-align: right;
+            font-size: 14px;
+            color: #5b5b5b;
+        }
+        .re-call {
+            padding: 5px 0;
+            margin: 0;
+            font-size: 14px;
+        }
+        .recall-img {
+            font-size: 10px;
+            text-align: center;
+            margin: auto 10px auto 0
+        }
+        .recorder-line {
+            position: relative;
+        }
+        .recorder-line::after {
+            content: '';
+            position: absolute;
+            top: 9px;
+            left: 75px;
+            border-bottom: 1px dashed #ccc;
+            width: 100%;
+            z-index: 11;
+        }
+        .service-status {
+            position: absolute;
+            color: #fff;
+            right: -20px;
+            top: 5px;
+            transform: rotate(45deg);
+            font-size: 0.5rem;
+            padding: 4px 20px;
+            transition: all 0.3s ease-in-out;
+        }
+        .fixed {
+            background: #61A84B;
+        }
+        .nofixed {
+            background: #FC3F3F;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wraper">
+        <div class="w-box">
+            <h1 class="plat-name">驾校综合运营平台</h1>
+            <div><span class="gray-label">问题时间：</span><span>2018年10月17日 16:30</span><label class="mgl"><span class="gray-label">类型：</span><span>新需求</span></label></div>
+            <div class="qst-panel">
+                <p><img src="qst.png" /><span class="gray-label">问题：</span>收费统计中，显示的数据不全。</p>
+            </div>
+            <div class="ans-panel">
+                <p><img src="ans.png" /><span class="gray-label">解决：</span>驾校删除了操作员导致的，重新添加上这个操作员。</p>
+            </div>
+            <div class="recorder">
+                <span>录入时间：2018年10月16日 16:40</span>
+                <span>工程师：王丽敏</span>
+            </div>
+            <div class="service-status nofixed">未解决</div>
+        </div>
+        <h4 class="recorder-line"><span style="background:#fff;">回访记录</span></h4>
+        <div class="base-flex">
+            <div class="recall-img">
+                <img src="re-call.png" width="24" height="24" /> </div>
+            <div style="margin-left:10px;">
+                <p class="re-call"><span style="margin-right:8px">田为民</span> <span>2018年10月17日 19:00</span></p>
+                <p class="re-call">驾校问题已解决，但会出现其他的小问题。需要售后进行沟通，已安排专门人员负责</p>
+            </div>
+        </div>
+        <div class="base-flex">
+            <div class="recall-img">
+                <img src="re-call.png" width="24" height="24" /></div>
+            <div style="margin-left:10px;">
+                <p class="re-call"><span style="margin-right:8px">田为民</span> <span>2018年10月17日 19:00</span></p>
+                <p class="re-call">驾校问题已解决，但会出现其他的小问题。需要售后进行沟通，已安排专门人员负责</p>
+            </div>
+        </div>
+    </div>
+    <div class="wraper">
+        <div class="w-box">
+            <h1 class="plat-name">驾校综合运营平台</h1>
+            <div><span class="gray-label">问题时间：</span><span>2018年10月17日 16:30</span><label class="mgl"><span class="gray-label">类型：</span><span>新需求</span></label></div>
+            <div class="qst-panel">
+                <p><img src="qst.png" /><span class="gray-label">问题：</span>收费统计中，显示的数据不全。</p>
+            </div>
+            <div class="ans-panel">
+                <p><img src="ans.png" /><span class="gray-label">解决：</span>驾校删除了操作员导致的，重新添加上这个操作员。</p>
+            </div>
+            <div class="recorder">
+                <span>录入时间：2018年10月16日 16:40</span>
+                <span>工程师：王丽敏</span>
+            </div>
+            <div class="service-status fixed">已解决</div>
+        </div>
+        <h4 class="recorder-line"><span style="background:#fff;">回访记录</span></h4>
+        <div class="base-flex">
+            <div class="recall-img">
+                <img src="re-call.png" width="24" height="24" /> </div>
+            <div style="margin-left:10px;">
+                <p class="re-call"><span style="margin-right:8px">田为民</span> <span>2018年10月17日 19:00</span></p>
+                <p class="re-call">驾校问题已解决，但会出现其他的小问题。需要售后进行沟通，已安排专门人员负责</p>
+            </div>
+        </div>
+        <div class="base-flex">
+            <div class="recall-img">
+                <img src="re-call.png" width="24" height="24" /></div>
+            <div style="margin-left:10px;">
+                <p class="re-call"><span style="margin-right:8px">田为民</span> <span>2018年10月17日 19:00</span></p>
+                <p class="re-call">驾校问题已解决，但会出现其他的小问题。需要售后进行沟通，已安排专门人员负责</p>
+            </div>
+        </div>
+    </div>
+    <script>
+var num = ["2","3","3","3","3","3","3","3","3","3","3"];
+console.log(frames)
+
+
+
+for(var i in document){
+// console.log(i)
+
+}
+
+    </script>
+</body>
+
+</html>

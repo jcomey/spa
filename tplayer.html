@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="TcPlayer-2.3.2.js"></script>
+</head>
+
+<body>
+    <div id="id_test_video" style="width:100%; height:400px;"></div>
+    <script>
+
+        var player = new TcPlayer('id_test_video', {
+            
+            "rtmp": "rtmp://106.14.105.2:10085/live/Stream2", //请替换成实际可用的播放地址
+            "autoplay": true,      //iOS下safari浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的
+            "coverpic": "  ",
+            "width": '480',//视频的显示宽度，请尽量使用视频分辨率宽度
+            "height": '320'//视频的显示高度，请尽量使用视频分辨率高度
+        })
+    </script>
+</body>
+
+</html>

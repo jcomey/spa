@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+</head>
+<body>
+    <button onclick="saveFile()">下载图片</button>
+    <img src="https://img.lookcss.com/hb2.jpg">
+    <script>
+    
+    function saveFile() {
+        console.log('res')
+var wx2 = typeof (wx) != "undefined" && wx || null;
+if (!wx2)
+    return;
+if (wx2) {
+    wx.downloadImage({
+        serverId: 'https://img.lookcss.com/hb2.jpg', // 需要下载的图片的服务器端ID，由uploadImage接口获得
+        isShowProgressTips: 1, // 默认为1，显示进度提示
+        success: function (res) {
+            var localId = res.localId; // 返回图片下载后的本地ID
+            console.log(res)
+        }
+    });
+
+
+}
+
+}
+    </script>
+</body>
+</html>

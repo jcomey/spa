@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <title>编辑套餐</title>
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="css/ele.css">
+    <script src="js/ele.js"></script>
+    <script src="js/clipboard.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+    <script>alert('不支持IE8及以下浏览器')</script>
+<![endif]-->
+</head>
+
+<body>
+    <div id="app">
+
+        <h2 class="center" style="margin-bottom: 50px;">保险套餐生成器</h2>
+
+        <el-tabs v-model="activeName" tab-position="left" @tab-click="handleClick">
+
+            <el-tab-pane label="重考补考">
+
+                <el-row :gutter="40">
+                    <el-col :span="8">
+                        <el-form :model="form" ref="form" label-width="80px">
+                            <el-form-item label="延迟生效" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form.day"></el-input>
+                            </el-form-item>
+                            <el-form-item label="科一赔付" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form.km1"></el-input>
+                            </el-form-item>
+                            <el-form-item label="科二赔付" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form.km2"></el-input>
+                            </el-form-item>
+                            <el-form-item label="科三赔付" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form.km3"></el-input>
+                            </el-form-item>
+                            <el-form-item label="累计赔付" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form.all"></el-input>
+                            </el-form-item>
+                            <el-form-item label="重考保障" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form.total"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button class="btn" data-clipboard-target=".target" @click="copy()" type="primary">
+                                    生成代码
+                                </el-button>
+                            </el-form-item>
+                        </el-form>
+                    </el-col>
+                    <el-col :span="12">
+
+                        <div id="contents">
+                            <h1 style="font-size: 1.2rem;color:#f00;text-align:center">
+                                {{form.day}}
+                            </h1>
+                            <div class="info-content">
+                                <h4>1.补考保障</h4>
+                                <p> 在本服务有效期内，被保障学员参加机动车驾驶人考试，若单科考试成绩未达到达标标准（科目一、科目二、科目三），根据约定，在各科实际补考费用金额内提供费用补偿。每人最高累计费用补偿不超过{{form.all}}元。
+                                </p>
+                                <table>
+                                    <tr>
+                                        <td>考试科目</td>
+                                        <td>单次赔付上限</td>
+                                    </tr>
+                                    <tr>
+                                        <td>科目一</td>
+                                        <td>{{form.km1}}元</td>
+                                    </tr>
+                                    <tr>
+                                        <td>科目二</td>
+                                        <td>{{form.km2}}元</td>
+                                    </tr>
+                                    <tr>
+                                        <td>科目三</td>
+                                        <td>{{form.km3}}元</td>
+                                    </tr>
+                                </table>
+                                <h4>2.重考保障</h4>
+                                <p>在本服务有效期内，被保障学员连续5次预约考试未通过，根据国家《机动车驾驶证申请和使用规定》的规定，学员已考试合格的其他科目成绩作废，对于学员需向驾驶培训机构重新报名学习而支付的驾驶培训费用，根据本服务约定提供最高{{form.total}}元的费用补偿
+                                </p>
+                            </div>
+                        </div>
+                        <h5>复制以下代码到表单简介中</h5>
+                        <textarea class="target">{{rawhtml}}</textarea>
+                    </el-col>
+
+
+                </el-row>
+
+
+
+
+
+
+
+            </el-tab-pane>
+            <el-tab-pane label="重考补考意外" name="second">
+                <el-row :gutter="40">
+                    <el-col :span="8">
+                        <el-form :model="form2" ref="form2" label-width="80px">
+                            <el-form-item label="延迟生效" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form2.day"></el-input>
+                            </el-form-item>
+                            <el-form-item label="科一赔付" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form2.km1"></el-input>
+                            </el-form-item>
+                            <el-form-item label="科二赔付" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form2.km2"></el-input>
+                            </el-form-item>
+                            <el-form-item label="科三赔付" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form2.km3"></el-input>
+                            </el-form-item>
+                            <el-form-item label="累计赔付" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form2.all"></el-input>
+                            </el-form-item>
+                            <el-form-item label="重考保障" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form2.total"></el-input>
+                            </el-form-item>
+                            <el-form-item label="意外保障" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form2.accident"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button class="btn" data-clipboard-target=".target2" @click='copy2()' type="primary">
+                                    生成代码
+                                </el-button>
+                            </el-form-item>
+                        </el-form>
+                    </el-col>
+                    <el-col :span="12">
+
+                        <div id="contents2">
+                            <h1 style="font-size: 1.2rem;color:#f00;text-align:center">
+                                {{form2.day}}
+                            </h1>
+                            <div class="info-content">
+                                <h4>1.补考保障</h4>
+                                <p> 在本服务有效期内，被保障学员参加机动车驾驶人考试，若单科考试成绩未达到达标标准（科目一、科目二、科目三），根据约定，在各科实际补考费用金额内提供费用补偿。每人最高累计费用补偿不超过{{form2.all}}元。
+                                </p>
+                                <table>
+                                    <tr>
+                                        <td>考试科目</td>
+                                        <td>单次赔付上限</td>
+                                    </tr>
+                                    <tr>
+                                        <td>科目一</td>
+                                        <td>{{form2.km1}}元</td>
+                                    </tr>
+                                    <tr>
+                                        <td>科目二</td>
+                                        <td>{{form2.km2}}元</td>
+                                    </tr>
+                                    <tr>
+                                        <td>科目三</td>
+                                        <td>{{form2.km3}}元</td>
+                                    </tr>
+                                </table>
+                                <h4>2.重考保障</h4>
+                                <p>在本服务有效期内，被保障学员连续5次预约考试未通过，根据国家《机动车驾驶证申请和使用规定》的规定，学员已考试合格的其他科目成绩作废，对于学员需向驾驶培训机构重新报名学习而支付的驾驶培训费用，根据本服务约定提供最高{{form2.total}}元的费用补偿
+                                </p>
+
+                                <h4>3.学车意外保障</h4>
+                                <p> 学员在学车期间发生意外身故，伤残，最高赔付{{form2.accident}}元。 </p>
+                            </div>
+                        </div>
+                        <h5>复制以下代码到表单简介中</h5>
+                        <textarea class="target2">{{rawhtml2}}</textarea>
+                    </el-col>
+
+
+                </el-row>
+            </el-tab-pane>
+            <el-tab-pane label="补考意外" name="third">
+                <el-row :gutter="40">
+                    <el-col :span="8">
+                        <el-form :model="form3" ref="form3" label-width="80px">
+                            <el-form-item label="延迟生效">
+                                <el-input v-model="form3.day"></el-input>
+                            </el-form-item>
+                            <el-form-item label="科一赔付">
+                                <el-input v-model="form3.km1"></el-input>
+                            </el-form-item>
+                            <el-form-item label="科二赔付">
+                                <el-input v-model="form3.km2"></el-input>
+                            </el-form-item>
+                            <el-form-item label="科三赔付">
+                                <el-input v-model="form3.km3"></el-input>
+                            </el-form-item>
+                            <el-form-item label="累计赔付">
+                                <el-input v-model="form3.all"></el-input>
+                            </el-form-item>
+
+                            <el-form-item label="意外保障">
+                                <el-input v-model="form3.accident"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button class="btn" data-clipboard-target=".target3" @click='copy3()' type="primary">
+                                    生成代码
+                                </el-button>
+                            </el-form-item>
+                        </el-form>
+                    </el-col>
+                    <el-col :span="12">
+
+                        <div id="contents3">
+                            <h1 style="font-size: 1.2rem;color:#f00;text-align:center">
+                                {{form3.day}}
+                            </h1>
+                            <div class="info-content">
+                                <h4>1.补考保障</h4>
+                                <p> 在本服务有效期内，被保障学员参加机动车驾驶人考试，若单科考试成绩未达到达标标准（科目一、科目二、科目三），根据约定，在各科实际补考费用金额内提供费用补偿。每人最高累计费用补偿不超过{{form3.all}}元。
+                                </p>
+                                <table>
+                                    <tr>
+                                        <td>考试科目</td>
+                                        <td>单次赔付上限</td>
+                                    </tr>
+                                    <tr>
+                                        <td>科目一</td>
+                                        <td>{{form3.km1}}元</td>
+                                    </tr>
+                                    <tr>
+                                        <td>科目二</td>
+                                        <td>{{form3.km2}}元</td>
+                                    </tr>
+                                    <tr>
+                                        <td>科目三</td>
+                                        <td>{{form3.km3}}元</td>
+                                    </tr>
+                                </table>
+                                <h4>2.学车意外保障</h4>
+                                <p> 学员在学车期间发生意外身故，伤残，最高赔付{{form3.accident}}元。 </p>
+                            </div>
+                        </div>
+                        <h5>复制以下代码到表单简介中</h5>
+                        <textarea class="target3">{{rawhtml3}}</textarea>
+                    </el-col>
+
+
+                </el-row>
+            </el-tab-pane>
+            <el-tab-pane label="只含补考" name="fourth">
+                <el-row :gutter="40">
+                    <el-col :span="8">
+                        <el-form :model="form4" ref="form4" label-width="80px">
+                            <el-form-item label="延迟生效" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form4.day"></el-input>
+                            </el-form-item>
+                            <el-form-item label="科一赔付" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form4.km1"></el-input>
+                            </el-form-item>
+                            <el-form-item label="科二赔付" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form4.km2"></el-input>
+                            </el-form-item>
+                            <el-form-item label="科三赔付" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form4.km3"></el-input>
+                            </el-form-item>
+                            <el-form-item label="累计赔付" :rules="[  { required: true, message: '此项不能为空'}]">
+                                <el-input v-model="form4.all"></el-input>
+                            </el-form-item>
+
+                            <el-form-item>
+                                <el-button class="btn" data-clipboard-target=".target4" @click='copy4()' type="primary">
+                                    生成代码
+                                </el-button>
+                            </el-form-item>
+                        </el-form>
+                    </el-col>
+                    <el-col :span="12">
+
+                        <div id="contents4">
+                            <h1 style="font-size: 1.2rem;color:#f00;text-align:center">
+                                {{form4.day}}
+                            </h1>
+                            <div class="info-content">
+                                <h4>1.补考保障</h4>
+                                <p> 在本服务有效期内，被保障学员参加机动车驾驶人考试，若单科考试成绩未达到达标标准（科目一、科目二、科目三），根据约定，在各科实际补考费用金额内提供费用补偿。每人最高累计费用补偿不超过{{form4.all}}元。
+                                </p>
+                                <table>
+                                    <tr>
+                                        <td>考试科目</td>
+                                        <td>单次赔付上限</td>
+                                    </tr>
+                                    <tr>
+                                        <td>科目一</td>
+                                        <td>{{form4.km1}}元</td>
+                                    </tr>
+                                    <tr>
+                                        <td>科目二</td>
+                                        <td>{{form4.km2}}元</td>
+                                    </tr>
+                                    <tr>
+                                        <td>科目三</td>
+                                        <td>{{form4.km3}}元</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                        <h5>复制以下代码到表单简介中</h5>
+                        <textarea class="target4">{{rawhtml4}}</textarea>
+                    </el-col>
+
+
+                </el-row>
+            </el-tab-pane>
+        </el-tabs>
+
+
+
+
+    </div>
+
+
+    <script>
+        isIE();
+        function isIE() {
+
+            if (!!window.ActiveXObject || "ActiveXObject" in window) {
+                $('#app').hide();
+                document.writeln('<h1><a  href=\'https://www.google.cn/chrome\'>当前页面不支持垃圾IE浏览器，请麻烦你使用最新chrome打开！！谢谢！点击下载👇</a></h1>')
+
+                return true;
+
+
+            }
+            else {
+
+                return false;
+            }
+        }
+    </script>
+
+    <script>
+
+        $(function () {
+
+
+            $('.target,.target2,.target3,.target4').click(function () {
+
+                $(this).select();
+
+
+            })
+
+        })
+
+
+
+        var clipboard = new ClipboardJS('.btn')
+        var app = new Vue({
+            el: '#app',
+            data: {
+                activeName: '',
+                form: {},
+                form2: {},
+                form3: {},
+                form4: {},
+                rawhtml: '',
+                rawhtml2: '',
+                rawhtml3: '',
+                rawhtml4: ''
+
+            },
+            watch: {
+
+            },
+            methods: {
+                copy() {
+                    var rawhtmls = $('#contents').html().trim();
+                    this.rawhtml = rawhtmls;
+                    this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+                    clipboard.on('success', e => {
+                        clipboard.destroy()
+                    })
+                    clipboard.on('error', e => {
+                        console.log('该浏览器不支持自动复制')
+                        clipboard.destroy()
+                    })
+                },
+                copy2() {
+                    var rawhtmls2 = $('#contents2').html();
+                    this.rawhtml2 = rawhtmls2;
+                    clipboard.on('success', e => {
+                        clipboard.destroy()
+                    })
+                    clipboard.on('error', e => {
+                        console.log('该浏览器不支持自动复制')
+                        clipboard.destroy()
+                    })
+                },
+                copy3() {
+                    console.log("3")
+                    var rawhtmls3 = $('#contents3').html();
+                    this.rawhtml3 = rawhtmls3;
+                    clipboard.on('success', e => {
+                        clipboard.destroy()
+                    })
+                    clipboard.on('error', e => {
+                        console.log('该浏览器不支持自动复制')
+                        clipboard.destroy()
+                    })
+                },
+                copy4() {
+                    var rawhtmls4 = $('#contents4').html();
+                    this.rawhtml4 = rawhtmls4;
+                    clipboard.on('success', e => {
+                        clipboard.destroy()
+                    })
+                    clipboard.on('error', e => {
+                        console.log('该浏览器不支持自动复制')
+                        clipboard.destroy()
+                    })
+                },
+                handleClick() {
+
+                },
+
+            },
+        })
+    </script>
+    <style>
+        #text {
+            width: 100%;
+            height: 300px;
+            word-break: break-all;
+            white-space: normal;
+
+        }
+
+        .target,
+        .target2,
+        .target3,
+        .target4 {
+            display: block;
+            text-align: justify;
+            color: #999;
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            border: 1px solid #666;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        body {
+            background: #f3f3f3
+        }
+
+        #app {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 10px;
+        }
+
+        .info-content {
+            line-height: 1.6;
+            background: #fff;
+            font-size: 0.9rem;
+        }
+
+        .info-content p {
+            text-align: justify;
+        }
+
+        .info-content h4 {
+            color: #EC4734;
+            margin: 10px 0;
+        }
+
+        .info-content table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .info-content table tr td {
+            border: 1px solid #ccc;
+            padding: 8px 10px;
+        }
+
+        .inline {
+            border: none;
+            border-bottom: 1px solid #222;
+            width: 80px;
+            outline: medium;
+            padding: 0 8px;
+        }
+    </style>
+
+</body>
+
+</html>

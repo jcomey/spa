@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js//axios.min.js"></script>
+    <!-- import Vue before Element -->
+    <script src="js/vue.js"></script>
+    <!-- import JavaScript -->
+    <script src="js/index.js"></script>
+</head>
+
+<body style="margin:0">
+    <div id="app">
+        <!-- <el-button @click="getData">Button</el-button> -->
+        <el-container>
+            <el-aside width="200px">
+                <el-menu :default-openeds="['1', '3']">
+                    <el-submenu index="1">
+                        <template slot="title"><i class="el-icon-message"></i>导航一</template>
+                        <el-menu-item-group>
+                            <template slot="title">分组一</template>
+                            <el-menu-item index="1-1">选项1</el-menu-item>
+                            <el-menu-item index="1-2">选项2</el-menu-item>
+                        </el-menu-item-group>
+                        <el-menu-item-group title="分组2">
+                            <el-menu-item index="1-3">选项3</el-menu-item>
+                        </el-menu-item-group>
+                        <el-submenu index="1-4">
+                            <template slot="title">选项4</template>
+                            <el-menu-item index="1-4-1">选项4-1</el-menu-item>
+                        </el-submenu>
+                    </el-submenu>
+                    <el-submenu index="2">
+                        <template slot="title"><i class="el-icon-menu"></i>导航二</template>
+                        <el-menu-item-group>
+                            <template slot="title">分组一</template>
+                            <el-menu-item index="2-1">选项1</el-menu-item>
+                            <el-menu-item index="2-2">选项2</el-menu-item>
+                        </el-menu-item-group>
+                        <el-menu-item-group title="分组2">
+                            <el-menu-item index="2-3">选项3</el-menu-item>
+                        </el-menu-item-group>
+                        <el-submenu index="2-4">
+                            <template slot="title">选项4</template>
+                            <el-menu-item index="2-4-1">选项4-1</el-menu-item>
+                        </el-submenu>
+                    </el-submenu>
+                    <el-submenu index="3">
+                        <template slot="title"><i class="el-icon-setting"></i>导航三</template>
+                        <el-menu-item-group>
+                            <template slot="title">分组一</template>
+                            <el-menu-item index="3-1">选项1</el-menu-item>
+                            <el-menu-item index="3-2">选项2</el-menu-item>
+                        </el-menu-item-group>
+                        <el-menu-item-group title="分组2">
+                            <el-menu-item index="3-3">选项3</el-menu-item>
+                        </el-menu-item-group>
+                        <el-submenu index="3-4">
+                            <template slot="title">选项4</template>
+                            <el-menu-item index="3-4-1">选项4-1</el-menu-item>
+                        </el-submenu>
+                    </el-submenu>
+                </el-menu>
+            </el-aside>
+            <el-container>
+                <el-main>
+                    <template>
+                        <el-tabs tab-position="top" style="height: 200px;">
+                            <el-tab-pane label="用户管理">
+                                <el-table :data="list" stripe>
+                                    <el-table-column v-for='item in tableHead' :prop='item.key' :label="item.label" :key="item.key">
+                                    </el-table-column>
+                                    <el-table-column label='操作'>
+                                        <template slot-scope="scope">
+                                            <el-switch active-color="#13ce66">
+                                            </el-switch>
+                                        </template>
+                                    </el-table-column>
+                                </el-table>
+                            </el-tab-pane>
+                            <el-tab-pane label="配置管理">
+                                <el-switch active-color="#13ce66" inactive-color="#ff4949">
+                                </el-switch>
+                            </el-tab-pane>
+                            <el-tab-pane label="角色管理">角色管理</el-tab-pane>
+                            <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
+                        </el-tabs>
+                    </template>
+                </el-main>
+            </el-container>
+        </el-container>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                fetchurl: 'https://api.dlite.cn/weapp/getData', //这里配置获取数据rul
+                value: true,
+                list: [],
+                tableHead: [{
+                    label: '单号',
+                    key: 'lsdh'
+                }, {
+                    label: '驾校名称',
+                    key: 'jxmc'
+                }, {
+                    label: '下单数量',
+                    key: 'number'
+                }, , {
+                    label: '卡类型',
+                    key: 'cardtype'
+                }, {
+                    label: '制卡公司',
+                    key: 'zkgs'
+                }, {
+                    label: '下单日期',
+                    key: 'date'
+                }, {
+                    label: '图像',
+                    key: 'img'
+                }, {
+                    label: '备注',
+                    key: 'note'
+                }]
+            }
+        },
+        created() {},
+        mounted() {
+            this.getData();
+        },
+        methods: {
+            change: function(index, row) {
+                console.log(index, row);
+            },
+            getData: function() {
+                axios.get(this.fetchurl).then(res => {
+                    console.table(res.data)
+                    this.list = res.data;
+                }).catch(function(error) {
+                    console.log(error);
+                }).finally(function() {});
+            }
+        }
+    })
+</script>
+
+</html>

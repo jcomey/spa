@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lazyLoad</title>
+    <style>
+        .pubu {
+            column-count: 6;
+            column-gap: 0;
+
+        }
+
+        .box {
+            box-sizing: border-box;
+            break-inside: avoid;
+            padding: 10px;
+        }
+
+        .items {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            height: auto;
+            font-size: 20px;
+            color: #686868;
+            box-sizing: border-box;
+            object-fit: cover;
+            border: 1px solid #ccc;
+            overflow: hidden;
+
+        }
+
+        img {
+            object-fit: cover;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pubu">
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/柯南.jpg" src="images/柯南.jpg" alt=""></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/工藤有希子.jpg" src="images/柯南.jpg" alt=""></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/兰.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/安室透.jpeg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/赤井秀一.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/目暮十三.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/怪盗基德.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/步美.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+     
+ 
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/柯南.jpg" src="images/柯南.jpg" alt=""></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/工藤有希子.jpg" src="images/柯南.jpg" alt=""></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/兰.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/安室透.jpeg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/赤井秀一.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/目暮十三.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/怪盗基德.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/步美.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/柯南.jpg" src="images/柯南.jpg" alt=""></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/工藤有希子.jpg" src="images/柯南.jpg" alt=""></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/兰.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/安室透.jpeg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/赤井秀一.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/目暮十三.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/怪盗基德.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+        <div class="box">
+            <div class="items"> <img data-original="https://img.lookcss.com/步美.jpg" alt="" src="images/柯南.jpg"></div>
+        </div>
+  
+    </div>
+
+
+
+
+    <script>
+
+
+
+
+
+
+        window.onload = function () {
+
+            var oImg = document.getElementsByTagName('img');
+            loadImg(oImg)
+            window.onscroll = function () {
+                loadImg(oImg);
+            }
+
+
+
+            function loadImg(arr) {
+                for (var i = 0; i < arr.length; i++) {
+
+                    if (arr[i].getBoundingClientRect().top < document.documentElement.clientHeight && !arr[i].isLoad) {
+                        arr[i].isLoad = true;
+                        if (arr[i].dataset) {
+                            goloadImg(arr[i], arr[i].dataset.original);
+                        }
+                        else {
+                            goloadImg(arr[i], arr[i].getAttribute("data-original"))
+                        }
+                        arr[i].style.cssText = "transition:opacity easy 4s;opacity:1;";
+                    }
+                }
+            }
+
+            function goloadImg(a, b) {
+
+                a.src = b;
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

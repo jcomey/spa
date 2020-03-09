@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/axios.min.js"></script>
+</head>
+
+<body>
+    <script>
+
+
+        axios.post('https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=27_K93KwaCPly-VqOaiRT2eXO0MHRwREqLfV9Iw8NNBn8fuxJWjR8DvOFOBxRNPw4LTViIhX1yNQchwgg8qYaMzEv6aXr3POfIVz5lkg6MdcQgnhR-Q4-nIVeX8hPaG8mrdjFsZC87Ae8mqB9NBISViAAAPZC', {
+            touser: 'oNMzs0Pva5AplGLT7nDqQOmmYlvU',
+            template_id: '6_yXVq_FBhGOOzQRDsA0ZZrKHTHLPvVbsoJySNDyy_I',
+            data: { "key1": { "value": "jcomey" }, "key2": { "value": "somed" } }
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+
+    </script>
+</body>
+
+</html>

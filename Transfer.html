@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>专车接送</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('.transfer-info').click(function() {
+                $(this).find('.flexu,.addr').toggle();
+            })
+        })
+    </script>
+    <style>
+        body {
+            background: #f6f8f7;
+            margin: 8px;
+        }
+        .transfer-title {
+            font-weight: 600;
+            padding: 8px;
+            background: #fff;
+            color: #1296db;
+            border-bottom: 1px solid #d8d8d8;
+        }
+        .green-dot {
+            display: inline-block;
+            width: 6px;
+            vertical-align: middle;
+            margin-right: 5px;
+            height: 6px;
+            background: #0fa54e;
+            margin-top: -5px;
+            border-radius: 50%
+        }
+        .transfer-info {
+            padding: 8px;
+            position: relative;
+            margin-top: 8px;
+            background: #fff;
+            border-radius: 2px;
+        }
+        .dail {
+            margin: auto 0;
+        }
+        .flexu {
+            font-size: 0.85rem;
+            color: #444;
+            display: flex;
+            margin:5px 0;
+            justify-content: space-between
+        }
+        .flexu span {
+            margin: auto 0;
+        }
+        .addr {
+            color: #444;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="transfer">
+        <div class="transfer-title">
+            <img src="sfcar.png" width="48" style="vertical-align:middle" />
+            <span>豫E88706</span>
+            <span>王富贵</span>
+        </div>
+        <div class="transfer-info">
+            <div class="time-span"><span class="green-dot"></span>2019-03-08 8:00</div>
+            <div class="flexu"><span>李明浩</span> <a href="tel:18688888888" class="dail"><img src="phone.png" width="26" /></a></div>
+            <div class="addr">家庭住址：安阳市文峰区华强城2期</div>
+        </div>
+        <div class="transfer-info">
+            <div class="time-span"><span class="green-dot"></span>2019-03-08 8:00</div>
+            <div class="flexu"><span>李明浩</span> <a href="tel:18688888888" class="dail"><img src="phone.png" width="26" /></a></div>
+            <div class="addr">家庭住址：安阳市文峰区华强城2期</div>
+        </div>
+    </div>
+</body>
+
+</html>

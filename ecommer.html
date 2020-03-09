@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>心品购-用心甄选品质生活！</title>
+    <script src="https://cdn.bootcss.com/vue/2.6.8/vue.js"></script>
+    <style>
+        .flex-box {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #e2e2e2;
+            padding: 5px 0;
+        }
+        .thumb {
+            margin: auto 10px;
+            flex: 1;
+            display: flex;
+        }
+        .thumb img {
+            border: 1px solid #f2f2f2;
+        }
+        .counter {
+            margin: auto 10px
+        }
+        .g-name {
+            display: inline-block;
+            font-weight: normal;
+            font-size: 1rem;
+            margin: 5px;
+        }
+        .intro {
+            color: #999;
+            margin: 0;
+            padding: 0;
+            font-size: 0.7rem;
+        }
+        .price {
+            white-space: nowrap
+            margin: 0;
+            padding: 0;
+            color: #e53b28;
+        }
+    </style>
+</head>
+
+<body>
+<video id="ad-video" src="http://v.ay001.net/dianshang.mp4"    preload="auto"
+    poster="assets/img/videoimg.png" controls x5-video-player-fullscreen="true" webkit-playsinline="true"
+    x-webkit-airplay="true" playsinline="true" x5-playsinline class="video" poster="http://v.ay001.net/posters.jpg"></video>
+
+    <div
+        style=" background: url(http://shop.ay001.net/Storage/template/20190314/6368818047518351248669268.png) no-repeat center center /100% 100%;    margin: 0 auto;  width: 100%;  text-align: center;padding-bottom:15px">
+        <video src="http://v.ay001.net/dianshang.mp4" controls="controls" poster="http://v.ay001.net/posters.jpg"
+            width="95%" style="margin: 0 auto; width: 88%; margin-bottom: 15px;"></video></div>
+    <div id="app">
+        <div class="flex-box">
+            <div class="thumb">
+                <img src="https://cbu01.alicdn.com/img/ibank/2018/688/339/10219933886_1066762405.400x400.jpg" width="80" height="80">
+                <h3 class="g-name">{{ goodname}}
+                    <p class="price">￥{{ price }}</p>
+                    <p class="intro">{{ intro}}</p>
+                </h3>
+            </div>
+            <div class="counter">
+                <button @click='min()'>-</button>
+                {{ count }}
+                <button @click='add()'>+</button>
+            </div>
+        </div>
+        <div style="background:#fff;box-shadow: 0 0 13px rgba(0,0,0,0.2); justify-content: space-between; position: fixed;z-index:999999;bottom:0px;left:0px;width:100%; display: flex">
+            <a style="margin:auto 10px;color: #e53b28">价格：¥ {{ count*price }}</a> <a href="#" @click="makeorder()" style="margin:auto 0; background: #e53b28;color: #fff; padding:10px 25px;text-decoration: none;">立即下单</a>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                count: 0,
+                price: 18,
+                goodname: ' 海飞丝洗发水 200ml 洗发露 洗发护发',
+                intro: '新老包装随机发货，敬请谅解'
+            },
+            methods: {
+                add: function() {
+                    this.count++
+                },
+                min: function() {
+                    if (this.count == 0) {
+                        this.count == 0
+                    } else {
+                        this.count--
+                    }
+                },
+                makeorder: function() {
+                    if (this.count == 0) {
+                        alert('商品数量必须大于0')
+                    } else {
+                        // window.location.href=" "
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

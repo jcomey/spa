@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>发票信息</title>
+    <style>
+        body {
+            background: #2aae67;
+            position: relative;
+        }
+        @font-face {
+            font-weight: normal;
+            font-style: normal;
+            font-family: "weui";
+            src: url('data:application/octet-stream;base64,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') format('truetype');
+        }
+        .copy {
+            visibility: hidden;
+            color: #2aae67;
+            border: 1px solid #2aae67;
+            border-radius: 2px;
+            height: 28px;
+            width: 70px;
+            line-height: 28px;
+            text-align: center;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .copyall:active {
+            opacity: 0.9;
+        }
+        .copyall {
+            transition: all .2s linear;
+            background: #2aae67;
+            color: #fff;
+            border-radius: 2px;
+            width: 80px;
+            display: inline-block;
+            line-height: 35px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .info {
+            background: #fff;
+            position: relative;
+            margin: 10px;
+            flex: 1;
+        }
+        .info::after {
+            width: 100%;
+            position: absolute;
+            bottom: -9px;
+            height: 16px;
+            content: '';
+            background: url('http://v.ay001.net/adown.svg') repeat-x;
+        }
+        .info div {
+            margin: 0;
+            padding: 15px 10px;
+            display: flex;
+            border-bottom: 1px dashed #eee;
+        }
+        .info div:last-child {
+            margin: 0;
+            padding: 15px 10px;
+            border: none;
+        }
+        .info div:hover .copy {
+            visibility: visible;
+            transition: all .2s linear;
+        }
+        .txt {
+            width: 80%;
+            word-break: normal;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            height: 21px;
+            margin: auto;
+            text-align: left;
+            display: inline-block;
+        }
+        .label {
+            margin: auto;
+            width: 70px;
+            text-align: right;
+            display: inline-block;
+        }
+        .mask {
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+        }
+        #toast {
+            display: none;
+        }
+        .toast {
+            position: fixed;
+            z-index: 5000;
+            width: 7.6em;
+            min-height: 7.6em;
+            top: 180px;
+            left: 50%;
+            margin-left: -3.8em;
+            background: rgba(17, 17, 17, 0.7);
+            text-align: center;
+            border-radius: 5px;
+            color: #FFFFFF;
+        }
+        .success {
+            display: inline-block;
+            vertical-align: middle;
+            font: normal normal normal 14px/1 "weui";
+            font-size: inherit;
+            text-rendering: auto;
+        }
+        .success:before {
+            display: inline-block;
+            margin-left: .2em;
+            margin-top: 22px;
+            font-size: 48px;
+            margin-right: .2em;
+            content: "\EA06"
+        }
+        .tc {
+            text-align: center;
+            padding: 10px;
+        }
+        .flex {
+            display: flex;
+            justify-content: flex-start;
+            align-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        @media screen and (max-width: 375px) {
+            .flex {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-content: center;
+                align-items: center;
+                width: 100%;
+            }
+            .label {
+                font-size: 0.85rem
+            }
+            .txt {
+                font-size: 0.85rem;
+                flex: 1;
+                margin: auto;
+                width: 60%;
+                height: 21px;
+                text-overflow: ellipsis;
+                word-break: break-all;
+                white-space: normal;
+                text-align: justify;
+                vertical-align: top;
+                text-align: left;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="toast">
+        <div class="mask"></div>
+        <div class="toast">
+            <i class="success"></i>
+            <p class="" id='copytxt'>复制成功</p>
+        </div>
+    </div>
+    <div class="flex">
+        <div class="info">
+            <h3 class='tc'>高沃发票信息</h3>
+            <div><span class="label">名称：</span>
+                <span class="txt">河南高沃信息技术服务有限公司</span><a class="copy" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="河南高沃信息技术服务有限公司">复制</a></div>
+            <div><span class="label">税号：</span>
+                <span class="txt">91410500MA4440J35A</span> <a class="copy" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="91410500MA4440J35A">复制</a></div>
+            <div><span class="label">开户：</span>
+                <span class="txt">中信银行股份有限公司安阳高新区支行</span> <a class="copy" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="中信银行股份有限公司安阳高新区支行">复制</a></div>
+            <div><span class="label">账户：</span>
+                <span class="txt">8111101013000686728</span> <a class="copy" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="8111101013000686728">复制</a></div>
+            <div><span class="label">电话：</span>
+                <span class="txt">0372-2561133</span> <a class="copy" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="0372-2561133">复制</a></div>
+            <div><span class="label">地址：</span>
+                <span class="txt">安阳高新区平原路与弦歌大道交汇处华强新天地6栋15层1513室</span> <a class="copy" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="安阳高新区平原路与弦歌大道交汇处华强新天地6栋15层1513室">复制</a>
+            </div>
+            <div style="text-align:center"><a class="copyall" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="河南高沃信息技术服务有限公司，税号91410500MA4440J35A，地址电话：安阳高新区平原路与弦歌大道交汇处华强新天地6栋15层1513室0372-2561133，开户行及账户：中信银行股份有限公司安阳高新区支行8111101013000686728
+">复制全部</a></div>
+        </div>
+        <div class="info">
+            <h3 class='tc'>军博软件发票信息</h3>
+            <div><span class="label">名称：</span>
+                <span class="txt">安阳市军博软件有限公司</span><a class="copy" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="安阳市军博软件有限公司">复制</a></div>
+            <div><span class="label">税号：</span>
+                <span class="txt">914105006871430747</span> <a class="copy" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="914105006871430747">复制</a></div>
+            <div><span class="label">开户：</span>
+                <span class="txt">工商银行安阳海河大道支行</span> <a class="copy" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="工商银行安阳海河大道支行">复制</a></div>
+            <div><span class="label">账户：</span>
+                <span class="txt">1706620409200011082</span> <a class="copy" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="1706620409200011082">复制</a></div>
+            <div><span class="label">电话：</span>
+                <span class="txt">0372-2561133</span> <a class="copy" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="0372-2561133">复制</a></div>
+            <div><span class="label">地址：</span>
+                <span class="txt">安阳高新区平原路与弦歌大道交汇处华强新天地6栋15层1516室</span> <a class="copy" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="安阳高新区平原路与弦歌大道交汇处华强新天地6栋15层1516室">复制</a></div>
+            <div style="text-align:center"><a class="copyall" onclick="copy()" oncopy="execCopy(event,'copy')" data-clipboard-text="安阳市军博软件有限公司，税号914105006871430747，地址电话：安阳高新区平原路与弦歌大道交汇处华强新天地6栋15层1516室0372-2561133，开户行及账户：工商银行安阳海河大道支行1706620409200011082
+">复制全部</a></div>
+        </div>
+    </div>
+    <script>
+        function copy() {
+            document.execCommand("copy");
+        }
+        // document.addEventListener('copy', function(e) {
+        //     e.clipboardData.setData('text/plain', 'Hello, world!');
+        //     e.clipboardData.setData('text/html', '<b>Hello, world!</b>');
+        //     e.preventDefault(); // We want our data, not data from any selection, to be written to the clipboard
+        // });
+        function execCopy(event, ele) {
+            try {
+                if (event.clipboardData) {
+                    console.log(event.target.dataset.clipboardText);
+                    event.preventDefault();
+                    event.clipboardData.setData("text/plain", event.target.dataset.clipboardText);
+                    var toast = document.getElementById('toast');
+                    var mask = document.getElementById('toast')
+                    toast.style.display = 'block'
+                    setTimeout(() => {
+                        toast.style.display = 'none'
+                    }, 2000);
+                    // alert('复制成功:' + event.clipboardData.getData("text"));
+                }
+            } catch (err) {
+                console.error(err)
+            }
+        }
+    </script>
+</body>
+
+</html>

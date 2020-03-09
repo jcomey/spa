@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@1.6/lib/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <van-row type="flex">
+            <van-col span="8" class="text-center">
+                <van-icon name='points'></van-icon>
+                <div>佣金管理</div>
+            </van-col>
+            <van-col span="8">span: 8</van-col>
+            <van-col span="8">span: 8</van-col>
+        </van-row>
+    </div>
+</body>
+<!-- 引入组件 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vant@1.6/lib/vant.min.js"></script>
+<!-- import Vue before Element -->
+<script>
+    new Vue({
+        el: '#app',
+        beforeMount: function() {
+            console.log('s')
+        },
+        mounted: function() {
+            console.log('s')
+        },
+        data: function() {
+            return {
+                msg: 'sb'
+            }
+        }
+    })
+</script>
+
+</html>
