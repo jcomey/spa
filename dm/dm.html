@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+
+    <title>合伙人证书生成工具</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <style>
+     
+        .bar {
+            margin: 10px 0;
+            position: fixed;
+            right: 0;
+            background: rgba(255,255,255.0.8);
+            bottom: 0;
+            padding: 20px;
+            border:1px solid #2281f8;
+
+        }
+
+        input {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="hhr.png" width="720" style="display: none;" id='poster' />
+
+    <div class="bar">
+        <p>编号：<input type="number" min="0" class="sn" placeholder="输入编号" /></p>
+        <p>姓名：<input class="name" placeholder="输入姓名" /></p>
+        <input type="button" class="sc" value="生成证书" /> <input type="button" class="clear" value="重新填写" />
+        <p style="color:#999;font-size: 14px;">右键图片保存即可</p>
+        <a id="link"></a>
+        <button id="save" onclick="saveAsImage()">保存为图片</button>
+    </div>
+    <div style="margin:0 auto;width: 640px; ">
+        <img id='img' style="display: none;">
+        <canvas id='myCanvas' style="display: none;"></canvas>
+    </div>
+    <script>
+        // console.log(window.screen.width)
+        
+        // console.log(window.screen.height)
+ 
+alert("分辨比"+window.devicePixelRatio)
+ alert('分辨率'+window.screen.width+'X'+window.screen.height)
+ alert('css像素'+window.innerWidth+'X'+window.innerHeight)
+ 
+
+// const myFont = new FontFace('myFont', 'url(txzt.ttf)')
+
+// myFont.load().then(font => {
+//   document.fonts.add(font)
+// console.log('fontloaded')
+
+
+// }).then(() => {
+//   var cvs = document.getElementById('myCanvas');
+//         var ctx = cvs.getContext('2d');
+//         var image = new Image();
+   
+//         function drawTxt(sn, name, dateString) {
+//             ctx.fillStyle = 'RGB(5, 5, 5)';
+//             ctx.font = '20px myFont';
+//             ctx.fillText(sn, 480, 84);
+//             ctx.font = '22px myFont';
+//             ctx.fillText(name, 178, 415);
+//             ctx.font = '22px myFont';
+//             ctx.fillText(dateString, 380, 800);
+
+//         }
+
+//         image.src = $('#poster').attr('src')
+//         image.onload = function drawbg(e) {
+//             $('#myCanvas').attr('width', this.width);
+//             $('#myCanvas').attr('height', this.height);
+//             ctx.drawImage(this, 0, 0, this.width, this.height, 0, 0, this.width, this.height)
+
+//         }
+
+//         $('.clear').click(function () {
+
+//             $('.sn').val('');
+//             $('.name').val('');
+//             location.reload();
+//         })
+
+//         function saveAsImage() {
+//             var exportImg = cvs.toDataURL("image/png").replace("image/png", "image/octet-stream"); // here is the most important part because if you dont replace you will get a DOM 18 exception.
+//             var sn = $('.sn').val();
+//             var name = $('.name').val();
+//             var link = document.getElementById('link');
+//             link.setAttribute('download', '合伙人证书'+name+sn+'.png');
+//             link.setAttribute('href', cvs.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+//             link.click();
+//         }
+
+//         $('.sc').click(function (image) {
+
+//             var sn = $('.sn').val();
+//             var name = $('.name').val();
+//             var myDate = new Date;
+//             var year = myDate.getFullYear(); //获取当前年
+//             var mon = myDate.getMonth() + 1; //获取当前月
+//             var date = myDate.getDate(); //获取当前日
+//             var dateString = year + '年' + mon + '月' + date + '日';
+
+//             drawTxt(sn, name, dateString)
+//             setTimeout(cti, 700)
+//             document.getElementById('img').style.display = 'block';
+
+//             document.getElementById('img').style.width = '100%';
+//             document.getElementById('img').style.height = 'auto';
+//         })
+
+//         function cti() {
+
+//             var exportImg = cvs.toDataURL("image/png", 1);
+//             document.getElementById('img').src = exportImg;
+//             $('#img').attr('width', 640);
+//             $('#img').attr('height', 908);
+
+
+//         }
+// })
+
+      
+
+    </script>
+</body>
+
+</html>
