@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安阳市蓝盾驾校·疫情通</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        /* @font-face {
+            font-family: txzt;
+            src: url(txzt.ttf);
+        } */
+
+        body {
+            font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+            font-size: 16px;
+            
+        }
+#novcan{background: #1b59e7 url(images/yqtop.png) no-repeat;}
+        em {
+            font-style: normal;
+        }
+
+        .panel {
+            width: 100%;
+        }
+
+        .bignum {
+            background: #fff;
+            display: flex;
+            margin: 10px;
+            
+            border-radius: 6px;
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+        }
+
+        .bignum div {
+            width: 33%;
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .number {
+            font-size: 1.2rem;
+            margin: 0.2rem 0;
+        }
+
+        .color-red {
+            color: #f74c31
+        }
+
+        .color-org {
+
+            color: #f78207
+        }
+
+        .color-wine {
+            color: #ae212c;
+        }
+
+        .color-brown {
+            color: #a25a4e;
+        }
+
+        .color-blue {
+            color: #5d7092;
+        }
+
+        .color-green {
+            color: #28b7a3
+        }
+
+
+
+        .small {
+            font-size: .8rem;
+        }
+
+        .little {
+            font-size: 0.6rem;
+        }
+
+        .info-time {
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .school-name {
+            color: #fff;
+            font-size: 30px;
+            font-family: txzt;
+            padding: 20px;
+            font-weight: normal;
+        }
+
+        .news-panel {
+            background: #fff;
+            margin: 10px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .news {
+            display: flex;
+            padding: 10px 10px 5px 10px;
+        }
+
+        .panel-title {
+
+            padding: 10px;
+            font-weight: 800;
+            color: #1b59e7;
+        }
+
+        .news-title {
+            color: #333;
+            font-size: 1rem;
+            padding: 10px 0;
+            font-weight: 600;
+        }
+
+        .news-summary {
+            color: #666;
+            text-align: justify;
+            font-size: 0.8rem;
+            padding-right: 15px;
+            line-height: 1.5;
+        }
+
+        .news-infoSource {
+            font-size: 0.8rem;
+            text-align: right;
+
+            color: #999;
+            padding: 8px 15px;
+        }
+
+        .block-left {
+            width: 4.5rem;
+            position: relative;
+        }
+
+        .block-left::after {
+            position: absolute;
+            left: 3.5rem;
+            height: 100%;
+            width: 11px;
+            border-left: 1px solid #ebebeb;
+            top: 28px;
+            content: '';
+            z-index: 9;
+        }
+
+        .block-left::before {
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            left: 3.2rem;
+            top: 14px;
+            content: '';
+            background: url(images/dote.png) no-repeat;
+            background-size: cover;
+        }
+
+        .block-right {
+            flex: 1
+        }
+
+        .pub-time {
+            padding: 10px 0;
+            font-size: 0.8rem;
+        }
+        .tool-bar{position: fixed;bottom:10px;left:0;width: 100%;display: flex;z-index: 100; }
+        .share-button{border:1px solid #1b59e7;color:#1b59e7;text-align: center;background: #fff;border-radius: 50px;flex:1;margin:0 10px;padding:10px 0;}
+        .draw-button{display:inline-block;background: #1b59e7;color: #fff;text-align: center; border-radius: 50px;flex:1;margin:0 10px;padding:10px 0;}
+        
+        #new-img img{position: fixed;left:0;right:0;top:0;right:0;margin:auto; z-index: 999;width: 100vw; }
+    </style>
+    <script src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
+
+    <script src="js/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div id="novcan">
+        <h1 class="school-name">安阳市蓝盾驾校<br>同舟共济·抗击疫情
+        </h1>
+        <p class="info-time">统计截止{{dates}}全国数据统计</p>
+        <div :data='nov' class="bignum">
+       
+            <!-- {{ key }} : {{ value }} -->
+            <div>
+                <span class="little">较昨日<em class='color-red'>{{nov.currentConfirmedIncr}}</em></span>
+                <strong class="number color-red">{{nov.currentConfirmedCount}}</strong>
+                <span class="small"> 现存确诊</span>
+            </div>
+            <div>
+
+                <span class="little">较昨日<em class='color-org'>+{{nov.suspectedIncr}}</em></span>
+                <strong class="number color-org">{{nov.suspectedCount}}</strong>
+                <span class="small">现存疑似</span>
+            </div>
+            <div>
+                <span class="little">较昨日<em class='color-brown'>{{nov.seriousIncr}}</em></span>
+                <strong class="number color-brown">{{nov.seriousCount}}</strong>
+                <span class="small">现存重症</span>
+
+            </div>
+            <div>
+                <span class="little">较昨日<em class='color-wine'>+{{nov.confirmedIncr}}</em></span>
+                <strong class="number color-wine">{{nov.confirmedCount}}</strong>
+                <span class="small">累计确诊</span>
+            </div>
+            <div>
+                <span class="little">较昨日<em class='color-blue'>+{{nov.deadIncr}}</em></span>
+                <strong class="number color-blue">{{nov.deadCount}}</strong>
+                <span class="small">累计死亡</span>
+            </div>
+            <div>
+                <span class="little">较昨日<em class='color-green'>+{{nov.curedIncr}}</em></span>
+                <strong class="number color-green">{{nov.curedCount}}</strong>
+                <span class="small">累计治愈</span>
+            </div>
+
+
+
+
+
+
+
+        </div>
+        <div class="news-panel">
+            <div class="panel-title">实时播报</div>
+            <div v-for="item in news" class="news">
+                <div class="block-left">
+
+                    <div class="pub-time">{{item.pubDateStr}}</div>
+                </div>
+                <div class="block-right">
+                    <div class="news-title">{{item.title}}</div>
+                    <div class="news-summary">{{item.summary}}</div>
+                    <div class="news-infoSource">信息来源:{{item.infoSource}}</div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+        <div class="tool-bar"><a class="share-button" v-on:click="share()">分享疫情通</a><a class="draw-button" v-on:click="drawCanv('#novcan')"><img width="18" style="vertical-align: middle;" src="images/download.png">生成疫情海报</a></div>
+   
+   <div id='new-img' style="display: none;">
+        <img id='img' >
+    </div>
+    </div>
+
+    <!-- 
+    
+ <iframe  class='panel' id='cap' scrolling='no' src='https://news.qq.com/zt2020/page/feiyan.htm' style="border:none;height: 100vh;"></iframe>   -->
+
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                nov: {},
+                news: {},
+                dates: ''
+            },
+            beforeCreate() {
+
+            },
+            created() { this.getNowFormatDate(); },
+            beforeMount() { },
+            mounted() { this.getData(); },
+            beforeDestroy() { },
+            destroyed() { },
+            methods: {
+                getData: function () {
+                    var that = this;
+                    axios.get('https://api.tianapi.com/txapi/ncov/index?key=6af3d23230d85ffd0b6269126dc83e2b&date=' + that.dates).then(function (response) {
+                        that.nov = response.data.newslist[0].desc;
+                        that.news = response.data.newslist[0].news;
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                },
+                getNowFormatDate: function () {
+                    var date = new Date();
+                    var seperator1 = "-";
+                    var year = date.getFullYear();
+                    var month = date.getMonth() + 1;
+                    var strDate = date.getDate();
+                    if (month >= 1 && month <= 9) {
+                        month = "0" + month;
+                    }
+                    if (strDate >= 0 && strDate <= 9) {
+                        strDate = "0" + strDate;
+                    }
+                    var currentdate = year + seperator1 + month + seperator1 + strDate;
+                    console.log(currentdate)
+                    this.dates = currentdate
+
+                },
+                drawCanv: function (root) {
+
+
+                   
+                    window.scrollTo(0,0)
+                 
+                    html2canvas(document.querySelector(root)).then(canvas => {
+                      //  document.body.appendChild(canvas)
+                     
+                        var exportImg = canvas.toDataURL("image/jpeg", 1);
+                       
+                         document.getElementById('img').src = exportImg;
+                         document.getElementById('new-img').style.display='block';
+                      
+                    });
+
+
+                }
+
+            },
+            share:function(){
+                console.log(this)
+            }
+
+
+        })
+
+
+    </script>
+
+</body>
+
+</html>
